@@ -17,4 +17,5 @@ public class Position {
 	public int get_y() {
 		return _y;
 	}
+	
 }
