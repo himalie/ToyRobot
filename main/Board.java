@@ -10,4 +10,12 @@ public class Board {
 		// TODO Auto-generated constructor stub
 	}
 
+	public int get_width() {
+		return _width;
+	}
+
+	public int get_height() {
+		return _height;
+	}
+
 }
