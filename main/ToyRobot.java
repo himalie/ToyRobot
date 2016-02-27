@@ -47,4 +47,12 @@ public class ToyRobot {
 		_direction = _direction.turn(1);		
 	}
 	
+	public String report() {
+		if (isPlaced()){
+			String _output = _position.get_x()+", "+_position.get_y()+", "+_direction;
+		return _output;
+		}
+		return null;
+	}
+	
 }
