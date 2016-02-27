@@ -13,8 +13,14 @@ public class ToyRobot {
 	private void set_Position(Position position){
 		_position = position;
 	}
+	public Position get_Position(){
+		return _position;
+	}
 	private void set_direction(Direction _direction) {
 		this._direction = _direction;
+	}
+	public Direction get_Direction(){
+		return this._direction;
 	}
 	
 	public boolean place(Position position, Direction direction){
@@ -32,4 +38,9 @@ public class ToyRobot {
 		}
 		return false;		
 	}
+	public void turn_Left()	
+	{
+		_direction = _direction.turn_Left();		
+	}
+	
 }

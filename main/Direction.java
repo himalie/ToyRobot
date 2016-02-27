@@ -7,10 +7,15 @@ public enum Direction
   EAST(2),
   SOUTH(3);
   
-  private final int direction;
+  private final int directionIndex;
 
   Direction(int dir)
   {
-    direction = dir;
-  }   
+	  directionIndex = dir;
+  }
+  public Direction turn_Left()
+  {
+	  int val= this.directionIndex -1;	  
+	  return Direction.values()[val];
+  }
 }
