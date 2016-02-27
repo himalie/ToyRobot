@@ -13,9 +13,9 @@ public enum Direction
   {
 	  directionIndex = dir;
   }
-  public Direction turn_Left()
+  public Direction turn(int index)
   {
-	  int val= this.directionIndex -1;	  
+	  int val= this.directionIndex + index;	  
 	  return Direction.values()[val];
   }
 }

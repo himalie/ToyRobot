@@ -40,7 +40,11 @@ public class ToyRobot {
 	}
 	public void turn_Left()	
 	{
-		_direction = _direction.turn_Left();		
+		_direction = _direction.turn(-1);		
+	}
+	public void turn_Right()	
+	{
+		_direction = _direction.turn(1);		
 	}
 	
 }

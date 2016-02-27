@@ -26,5 +26,18 @@ public class RobotTurningTests {
 		assertEquals(Direction.WEST, robot.get_Direction());
 		
 	}
+	@Test
+	public void ShouldTurnRightFromGivenDirection() {
+		Board board = new Board(5,5);
+		Validatable positionValidator= new PositionValidator(board);
+		ToyRobot robot = new ToyRobot(positionValidator);
+		
+		Position defaultPosition = new Position(2,2);
+		robot.place(defaultPosition, Direction.WEST);
+		robot.turn_Right();
+		
+		assertEquals(Direction.NORTH, robot.get_Direction());
+		
+	}
 
 }
