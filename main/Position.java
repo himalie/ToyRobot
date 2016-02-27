@@ -1,9 +1,11 @@
 package main;
 
 public class Position {
-	private final int _x;
-	private final int _y;
+	private int _x;
+	private int _y;
 	
+	public Position()
+	{}
 	public Position(int x, int y)
 	{		
 		this._x = x;
@@ -17,5 +19,9 @@ public class Position {
 	public int get_y() {
 		return _y;
 	}
-	
+	public Position next_Position(Position position, int x, int y){
+		position._x += x;
+		position._y +=y;
+		return position;
+	}	
 }

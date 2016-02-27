@@ -9,7 +9,6 @@ public class PositionValidator implements Validatable {
 		this._board = board;
 	}
 	public boolean validate(Position position) {
-		// TODO Auto-generated method stub
 		if ((position.get_x() >= _board.get_width())|| (position.get_x()<0 ) ||
 				(position.get_y()>= _board.get_height()) || (position.get_y() <0))
 			{
@@ -17,5 +16,6 @@ public class PositionValidator implements Validatable {
 			}
 		return true;
 	}
+	
 
 }

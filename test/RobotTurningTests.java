@@ -21,7 +21,7 @@ public class RobotTurningTests {
 		
 		Position defaultPosition = new Position(2,2);
 		robot.place(defaultPosition, Direction.NORTH);
-		robot.turn_Left();
+		robot.Left();
 		
 		assertEquals(Direction.WEST, robot.get_Direction());
 		
@@ -34,10 +34,19 @@ public class RobotTurningTests {
 		
 		Position defaultPosition = new Position(2,2);
 		robot.place(defaultPosition, Direction.WEST);
-		robot.turn_Right();
+		robot.Right();
 		
 		assertEquals(Direction.NORTH, robot.get_Direction());
 		
+	}
+	@Test
+	public void ShouldReturnFalseWhenTurningIfNotPlaced(){
+		Board board = new Board(5,5);
+		Validatable positionValidator= new PositionValidator(board);
+		ToyRobot robot = new ToyRobot(positionValidator);
+				
+		boolean isTurned = robot.Right();
+		assertEquals(false, isTurned);
 	}
 
 }

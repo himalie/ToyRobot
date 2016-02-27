@@ -38,13 +38,25 @@ public class ToyRobot {
 		}
 		return false;		
 	}
-	public void turn_Left()	
+	public boolean Left()	
 	{
-		_direction = _direction.turn(-1);		
+		if(isPlaced()){
+			_direction = _direction.turn(-1);
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
-	public void turn_Right()	
+	public boolean Right()	
 	{
-		_direction = _direction.turn(1);		
+		if(isPlaced()){
+			_direction = _direction.turn(1);
+			return true;
+		}
+		else{
+			return false;
+		}		
 	}
 	
 	public String report() {
