@@ -28,10 +28,8 @@ public class ToyRobot {
 	public boolean isPlaced()
 	{
 		if (_position != null){
-			System.out.println("not eual null");
 			return true;
 		}
-		System.out.println(" eual null");
 		return false;		
 	}
 }
