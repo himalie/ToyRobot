@@ -4,6 +4,7 @@ import main.Position;
 import main.ToyRobot;
 import main.Direction;
 import main.Validatable;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.Test;
@@ -18,5 +19,12 @@ public class RobotInitializationTests {
 		
 		robot.place(position, Direction.NORTH);
 		verify(positionValidator, atLeastOnce()).validate(position);		
-	}	
+	}
+	@Test 
+	public void ShouldNotBeInAPlaceIfNotPlaced() {
+		Validatable positionValidator = mock(Validatable.class);				
+		ToyRobot robot = new ToyRobot(positionValidator);
+		boolean isPlaced = robot.isPlaced();
+		assertEquals(false, isPlaced);
+	}
 }

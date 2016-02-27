@@ -9,6 +9,14 @@ public class ToyRobot {
 	public ToyRobot(Validatable positionValidator){
 		this._positionValidator = positionValidator;
 	}
+		
+	private void set_Position(Position position){
+		_position = position;
+	}
+	private void set_direction(Direction _direction) {
+		this._direction = _direction;
+	}
+	
 	public boolean place(Position position, Direction direction){
 		if (_positionValidator.validate(position)){
 			set_Position(position);
@@ -17,11 +25,13 @@ public class ToyRobot {
 		}
 		return false;	
 	}
-	
-	private void set_Position(Position position){
-		_position = position;
-	}
-	private void set_direction(Direction _direction) {
-		this._direction = _direction;
+	public boolean isPlaced()
+	{
+		if (_position != null){
+			System.out.println("not eual null");
+			return true;
+		}
+		System.out.println(" eual null");
+		return false;		
 	}
 }
