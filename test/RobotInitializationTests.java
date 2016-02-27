@@ -22,9 +22,23 @@ public class RobotInitializationTests {
 	}
 	@Test 
 	public void ShouldNotBeInAPlaceIfNotPlaced() {
-		Validatable positionValidator = mock(Validatable.class);				
+		Validatable positionValidator = mock(Validatable.class);
 		ToyRobot robot = new ToyRobot(positionValidator);
+		
 		boolean isPlaced = robot.isPlaced();
 		assertEquals(false, isPlaced);
+	}
+	@Test
+	public void ShouldBeInAPlaceIfPlaced(){
+			
+		Validatable positionValidator = mock(Validatable.class);
+		Position position = new Position(1,2);
+		when(positionValidator.validate(position))
+			.thenReturn(true);
+		ToyRobot robot = new ToyRobot(positionValidator);
+		robot.place(position, Direction.NORTH);
+		
+		boolean isPlaced = robot.isPlaced();
+		assertEquals(true, isPlaced);
 	}
 }
