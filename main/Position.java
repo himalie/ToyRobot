@@ -19,7 +19,7 @@ public class Position {
 	public int get_y() {
 		return _y;
 	}
-	public Position next_Position(Position position, int x, int y){
+	public Position change_Position(Position position, int x, int y){
 		position._x += x;
 		position._y +=y;
 		return position;
