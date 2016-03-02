@@ -7,7 +7,6 @@ public class Board {
 	public Board(int width, int height) {
 		this._width = width;
 		this._height = height;
-		// TODO Auto-generated constructor stub
 	}
 
 	public int get_width() {
