@@ -57,8 +57,8 @@ public class RobotTurningTests {
 		when(_positionValidator.validate(defaultPosition))
 			.thenReturn(true);
 		robot.place(defaultPosition, inputDirection);
-		robot.LeftTurn();		
-		verify(_robotTurner, times(1)).LeftTurn(inputDirection);
+		robot.turnLeft();		
+		verify(_robotTurner, times(1)).turnLeft(inputDirection);
 		
 	}
 	
@@ -69,8 +69,8 @@ public class RobotTurningTests {
 		when(_positionValidator.validate(defaultPosition))
 			.thenReturn(true);
 		robot.place(defaultPosition, inputDirection);
-		robot.RightTurn();		
-		verify(_robotTurner, times(1)).RightTurn(inputDirection);
+		robot.turnRight();		
+		verify(_robotTurner, times(1)).turnRight(inputDirection);
 		
 	}
 	
@@ -79,8 +79,8 @@ public class RobotTurningTests {
 		
 		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);
 						
-		boolean isTurnedLeft = robot.LeftTurn();
-		boolean isTurnedRight = robot.RightTurn();
+		boolean isTurnedLeft = robot.turnLeft();
+		boolean isTurnedRight = robot.turnRight();
 		assertEquals(false, isTurnedLeft);
 		assertEquals(false, isTurnedRight);
 				

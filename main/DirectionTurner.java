@@ -2,12 +2,12 @@ package main;
 
 public class DirectionTurner implements Turnable{
 		
-	public Direction LeftTurn(Direction direction)
+	public Direction turnLeft(Direction direction)
 	{
 		return turn(direction, -1);
 		
 	}
-	public Direction RightTurn(Direction direction)
+	public Direction turnRight(Direction direction)
 	{
 		return turn(direction, 1);
 		
