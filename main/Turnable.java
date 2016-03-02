@@ -1,6 +1,6 @@
 package main;
 
 public interface Turnable {
-	Direction Left(Direction directoin);
-	Direction Right(Direction direction);
+	Direction LeftTurn(Direction directoin);
+	Direction RightTurn(Direction direction);
 }

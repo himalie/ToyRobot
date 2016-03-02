@@ -40,7 +40,7 @@ public class DirectionTurningTests {
 	public void ShouldTurnLeftFromGivenDirection() {
 
 		Turnable directionTurner= new DirectionTurner();
-		Direction _direction = directionTurner.Left(inputDirection);
+		Direction _direction = directionTurner.LeftTurn(inputDirection);
 		
 		assertEquals(expectedDirectionTurnedLeft, _direction);
 		
@@ -49,7 +49,7 @@ public class DirectionTurningTests {
 	public void ShouldTurnRightFromGivenDirection() {
 
 		Turnable directionTurner= new DirectionTurner();
-		Direction _direction = directionTurner.Right(inputDirection);
+		Direction _direction = directionTurner.RightTurn(inputDirection);
 		
 		assertEquals(expectedDirectionTurnedRight, _direction);
 		
