@@ -5,16 +5,9 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
 
-import main.Board;
 import main.Direction;
 import main.DirectionTurner;
-import main.Movable;
-import main.Position;
-import main.PositionValidator;
-import main.RobotMover;
-import main.ToyRobot;
 import main.Turnable;
-import main.Validatable;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
