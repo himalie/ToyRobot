@@ -4,11 +4,13 @@ public class ToyRobot {
 	private Position _position;
 	private Direction _direction;
 	private final Validatable _positionValidator;
-	private final Turnable _robotTurner;	
+	private final Turnable _robotTurner;
+	private final Movable _robotMover;
 	
-	public ToyRobot(Validatable positionValidator, Turnable robotTurner){
+	public ToyRobot(Validatable positionValidator, Turnable robotTurner, Movable robotMover){
 		this._positionValidator = positionValidator;
 		this._robotTurner = robotTurner;
+		this._robotMover = robotMover;
 	}
 		
 	private void set_Position(Position position){
@@ -69,32 +71,13 @@ public class ToyRobot {
 	}
 	public boolean move()
 	{
-		if (isPlaced()){
-			Position nextPosition = new Position(_position.get_x(), _position.get_y());
-			switch(this._direction){
-			case NORTH:
-				nextPosition = nextPosition.change_Position(nextPosition, 0,1);
-				break;
-			case EAST:
-				nextPosition = nextPosition.change_Position(nextPosition,1,0);
-				break;
-			case SOUTH:
-				nextPosition = nextPosition.change_Position(nextPosition,0,-1);
-				break;
-			case WEST:
-				nextPosition = nextPosition.change_Position(nextPosition,-1, 0);
-				break;
-			}
-			if (_positionValidator.validate(nextPosition))
-			{
-				set_Position(nextPosition);
-				return true;
-			}
-			else{
-				return false;
-			}		
+		Position position = _robotMover.move(this._position, this._direction);
+		if (position != null)
+		{
+			set_Position(position);
+			return true;
 		}
-		return false;
+		return false;		
 	}
 	
 }

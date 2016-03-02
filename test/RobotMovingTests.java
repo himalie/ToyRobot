@@ -1,14 +1,19 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.times;
+
 import java.util.Arrays;
 import java.util.Collection;
 
-import main.Board;
 import main.Direction;
+import main.Movable;
 import main.Position;
 import main.PositionValidator;
 import main.ToyRobot;
+import main.Turnable;
 import main.Validatable;
 
 import org.junit.Test;
@@ -23,13 +28,20 @@ public class RobotMovingTests {
 	private int expectedY;
 	private Direction inputDirection;
 	
+	private final Validatable _positionValidator;
+	private final Movable _robotMover;
+	private final Turnable _robotTurner;
+	
 	public RobotMovingTests(Direction inputDirection, int x, int y) {
 		this.inputDirection = inputDirection;
 	    this.expectedX = x;
 	    this.expectedY = y;
+	    _positionValidator = mock(PositionValidator.class);
+		_robotMover = mock(Movable.class);
+		_robotTurner = mock(Turnable.class);
 	}
 	
-	// Initial position 2,2
+	// Initial position 4,4
 	@Parameterized.Parameters
 	   public static Collection<Object[]> resultedPosition() {
 	      return Arrays.asList(new Object[][] {
@@ -41,16 +53,16 @@ public class RobotMovingTests {
 	   }
 	@Test 
 	public void ShouldMoveOneStepInTheDirectionGiven()
-	{
-		Board board = new Board(5,5);		
+	{	
 		Position defaultPosition = new Position(4,4);
-		Validatable positionValidator = new PositionValidator(board);
-		ToyRobot robot = new ToyRobot(positionValidator);
-				
-		robot.place(defaultPosition, inputDirection);
-		robot.move();
+		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);
 		
-		assertEquals(this.expectedX, robot.get_Position().get_x());
-		assertEquals(this.expectedY, robot.get_Position().get_y());
+		when(_positionValidator.validate(defaultPosition))
+		.thenReturn(true);
+		robot.place(defaultPosition, inputDirection);
+		
+		robot.move();
+		verify(_robotMover, times(1)).move(defaultPosition, inputDirection);
+					
 	}
 }
