@@ -13,9 +13,12 @@ public enum Direction
   {
 	  directionIndex = dir;
   }
-  public Direction turn(int index)
+  public int get_directionIndex()
   {
-	  int val= this.directionIndex + index;	  
-	  return Direction.values()[val];
+	  return directionIndex;	  
+  }
+  public int count()
+  {
+	  return this.values().length;
   }
 }
