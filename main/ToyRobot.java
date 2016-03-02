@@ -4,9 +4,11 @@ public class ToyRobot {
 	private Position _position;
 	private Direction _direction;
 	private final Validatable _positionValidator;
+	private final Turnable _robotTurner;
 	
-	public ToyRobot(Validatable positionValidator){
+	public ToyRobot(Validatable positionValidator, Turnable robotTurner){
 		this._positionValidator = positionValidator;
+		this._robotTurner = robotTurner;
 	}
 		
 	private void set_Position(Position position){
@@ -40,7 +42,7 @@ public class ToyRobot {
 	public boolean Left()	
 	{
 		if(isPlaced()){
-			_direction =  _direction.turn(-1);
+			_direction =  _robotTurner.Left(_direction);
 			return true;
 		}
 		else{
@@ -50,7 +52,7 @@ public class ToyRobot {
 	public boolean Right()	
 	{
 		if(isPlaced()){
-			_direction = _direction.turn(1);
+			_direction = _robotTurner.Right(_direction);
 			return true;
 		}
 		else{
