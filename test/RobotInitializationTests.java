@@ -1,8 +1,11 @@
 package test;
 
+import main.Movable;
 import main.Position;
+import main.PositionValidator;
 import main.ToyRobot;
 import main.Direction;
+import main.Turnable;
 import main.Validatable;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -10,20 +13,27 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 public class RobotInitializationTests {	
+	private final Validatable _positionValidator;
+	private final Movable _robotMover;
+	private final Turnable _robotTurner;
+	
+	public RobotInitializationTests(){
+		_positionValidator = mock(PositionValidator.class);
+		_robotMover = mock(Movable.class);
+		_robotTurner = mock(Turnable.class);
+	}
 
 	@Test
 	public void ShouldValidatePositionOnInitialization() {			
-		Validatable positionValidator = mock(Validatable.class);				
-		ToyRobot robot = new ToyRobot(positionValidator);
+		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);
 		Position position = new Position(1,2);
 		
 		robot.place(position, Direction.NORTH);
-		verify(positionValidator, atLeastOnce()).validate(position);		
+		verify(_positionValidator, atLeastOnce()).validate(position);		
 	}
 	@Test 
 	public void ShouldNotBeInAPlaceIfNotPlaced() {
-		Validatable positionValidator = mock(Validatable.class);
-		ToyRobot robot = new ToyRobot(positionValidator);
+		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);
 		
 		boolean isPlaced = robot.isPlaced();
 		assertEquals(false, isPlaced);
@@ -31,11 +41,10 @@ public class RobotInitializationTests {
 	@Test
 	public void ShouldBeInAPlaceIfPlaced(){
 			
-		Validatable positionValidator = mock(Validatable.class);
 		Position position = new Position(1,2);
-		when(positionValidator.validate(position))
+		when(_positionValidator.validate(position))
 			.thenReturn(true);
-		ToyRobot robot = new ToyRobot(positionValidator);
+		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);
 		robot.place(position, Direction.NORTH);
 		
 		boolean isPlaced = robot.isPlaced();

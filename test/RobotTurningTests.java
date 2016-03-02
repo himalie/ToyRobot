@@ -29,6 +29,7 @@ public class RobotTurningTests {
 	private Direction inputDirection;
 	private final Validatable _positionValidator;
 	private final Turnable _robotTurner;
+	private final Movable _robotMover;
 	
 	public RobotTurningTests(Direction expectedDirectionTurnedLeft, Direction expectedDirectionTurnedRight, Direction inputDirection) {
 		this.expectedDirectionTurnedLeft = expectedDirectionTurnedLeft;
@@ -36,6 +37,7 @@ public class RobotTurningTests {
 		this.inputDirection = inputDirection;
 		_positionValidator = mock(PositionValidator.class);
 		_robotTurner = mock(Turnable.class);
+		_robotMover = mock(Movable.class);
 	}
 
 	@Parameterized.Parameters
@@ -50,7 +52,7 @@ public class RobotTurningTests {
 
 	@Test
 	public void ShouldTurnLeftFromGivenDirection() {		
-		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner);		
+		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);		
 		Position defaultPosition = new Position(2,2);
 		when(_positionValidator.validate(defaultPosition))
 			.thenReturn(true);
@@ -62,7 +64,7 @@ public class RobotTurningTests {
 	
 	@Test
 	public void ShouldTurnRightFromGivenDirection() {		
-		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner);		
+		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);		
 		Position defaultPosition = new Position(2,2);
 		when(_positionValidator.validate(defaultPosition))
 			.thenReturn(true);
@@ -75,7 +77,7 @@ public class RobotTurningTests {
 	@Test
 	public void ShouldReturnFalseWhenTurningIfNotPlaced(){
 		
-		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner);
+		ToyRobot robot = new ToyRobot(_positionValidator, _robotTurner, _robotMover);
 						
 		boolean isTurnedLeft = robot.LeftTurn();
 		boolean isTurnedRight = robot.RightTurn();
