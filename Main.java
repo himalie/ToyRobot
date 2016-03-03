@@ -17,7 +17,7 @@ public class Main {
         System.out.println("EXIT");
         System.out.print("Enter :");
 
-		RobotSimulator _simulator = new RobotSimulator();
+	RobotSimulator _simulator = new RobotSimulator();
         Scanner scanner= new Scanner(System.in);
         String inputString = scanner.nextLine();
         boolean continueFlag = true;
@@ -29,9 +29,9 @@ public class Main {
         	}
         	else
         	{
-        		evaluateCommands(inputString, _simulator);
-        		System.out.print(" Enter a command for the Toy Robot Simulator : ");
-            	inputString = scanner.nextLine();
+			evaluateCommands(inputString, _simulator);
+			System.out.print(" Enter a command for the Toy Robot Simulator : ");
+        		inputString = scanner.nextLine();
         	}        	
         }
         System.out.println("You have chosen to exit the program.");
@@ -56,15 +56,16 @@ public class Main {
 					else
 					{
 						parameters = args[1].split(",");
-			            try {
-			                x = Integer.parseInt(parameters[0]);
-			                y = Integer.parseInt(parameters[1]);
-			                direction = Direction.valueOf(parameters[2]);
-			            } catch (Exception e) {
-			                System.out.println("Invalid commands in PLACE. ex: PLACE 0,0,NORTH");
-			            }
+						try {
+							x = Integer.parseInt(parameters[0]);
+							y = Integer.parseInt(parameters[1]);
+							direction = Direction.valueOf(parameters[2]);
+							} 
+							catch (Exception e) {
+							System.out.println("Invalid commands in PLACE. ex: PLACE 0,0,NORTH");
+						}
 					}
-		        }
+		        	}
 				String reportOutput;
 				switch (command)
 				{
@@ -98,11 +99,8 @@ public class Main {
 		catch (Exception e)
 		{
 			System.out.println("You have entered an invalid command!");
-			
 		}
-		
-		
 	}
 		
-	}
+}
 
