@@ -27,9 +27,9 @@ public class ToyRobot {
 	}
 	
 	public boolean place(Position position, Direction direction){
-		if (_positionValidator.validate(position)){
+		if (_positionValidator.validate(position)){			
 			set_Position(position);
-			set_direction(direction);					
+			set_direction(direction);
 			return true;
 		}
 		return false;	
@@ -41,20 +41,20 @@ public class ToyRobot {
 		}
 		return false;		
 	}
-	public boolean LeftTurn()	
+	public boolean turnLeft()	
 	{
 		if(isPlaced()){
-			_direction =  _robotTurner.LeftTurn(_direction);
+			_direction =  _robotTurner.turnLeft(_direction);
 			return true;
 		}
 		else{
 			return false;
 		}
 	}
-	public boolean RightTurn()	
+	public boolean turnRight()	
 	{
 		if(isPlaced()){
-			_direction = _robotTurner.RightTurn(_direction);
+			_direction = _robotTurner.turnRight(_direction);
 			return true;
 		}
 		else{
@@ -65,7 +65,7 @@ public class ToyRobot {
 	public String report() {
 		if (isPlaced()){
 			String _output = _position.get_x()+", "+_position.get_y()+", "+_direction;
-		return _output;
+			return _output;
 		}
 		return null;
 	}

@@ -6,11 +6,8 @@ public class PositionMover implements Movable{
 	public PositionMover(Validatable positionValidator){
 		_positionValidator = positionValidator;		
 	}
-	public Validatable get_tt()
-	{
-		return _positionValidator;
-	}
-	public Position move(Position position, Direction direction){
+
+	public Position move(Position position, Direction direction){		
 		Position _position = position;
 		if (_position != null){
 			Position nextPosition = new Position(_position.get_x(), _position.get_y());
